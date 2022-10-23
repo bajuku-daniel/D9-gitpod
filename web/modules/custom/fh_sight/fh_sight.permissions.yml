@@ -1,0 +1,13 @@
+administer fh sight:
+  title: 'Administer fh sight settings'
+  restrict access: true
+access fh sight overview:
+  title: 'Access fh sight overview page'
+delete fh sight:
+  title: Delete fh sight
+create fh sight:
+  title: Create fh sight
+view fh sight:
+  title: View fh sight
+edit fh sight:
+  title: Edit fh sight

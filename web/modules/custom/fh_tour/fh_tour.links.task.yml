@@ -1,0 +1,22 @@
+entity.fh_tour.settings:
+  title: Settings
+  route_name: entity.fh_tour.settings
+  base_route: entity.fh_tour.settings
+entity.fh_tour.view:
+  title: View
+  route_name: entity.fh_tour.canonical
+  base_route: entity.fh_tour.canonical
+entity.fh_tour.edit_form:
+  title: Edit
+  route_name: entity.fh_tour.edit_form
+  base_route: entity.fh_tour.canonical
+entity.fh_tour.delete_form:
+  title: Delete
+  route_name: entity.fh_tour.delete_form
+  base_route: entity.fh_tour.canonical
+  weight: 10
+entity.fh_tour.collection:
+  title: FH Tour
+  route_name: entity.fh_tour.collection
+  base_route: system.admin_content
+  weight: 10

@@ -1,0 +1,22 @@
+entity.fh_sight.settings:
+  title: Settings
+  route_name: entity.fh_sight.settings
+  base_route: entity.fh_sight.settings
+entity.fh_sight.view:
+  title: View
+  route_name: entity.fh_sight.canonical
+  base_route: entity.fh_sight.canonical
+entity.fh_sight.edit_form:
+  title: Edit
+  route_name: entity.fh_sight.edit_form
+  base_route: entity.fh_sight.canonical
+entity.fh_sight.delete_form:
+  title: Delete
+  route_name: entity.fh_sight.delete_form
+  base_route: entity.fh_sight.canonical
+  weight: 10
+entity.fh_sight.collection:
+  title: FH Sight
+  route_name: entity.fh_sight.collection
+  base_route: system.admin_content
+  weight: 10

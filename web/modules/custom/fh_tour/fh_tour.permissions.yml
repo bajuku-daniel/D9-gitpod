@@ -1,0 +1,13 @@
+administer fh tour:
+  title: 'Administer fh tour settings'
+  restrict access: true
+access fh tour overview:
+  title: 'Access fh tour overview page'
+delete fh tour:
+  title: Delete fh tour
+create fh tour:
+  title: Create fh tour
+view fh tour:
+  title: View fh tour
+edit fh tour:
+  title: Edit fh tour

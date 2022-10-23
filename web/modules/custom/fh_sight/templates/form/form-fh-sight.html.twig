@@ -1,0 +1,172 @@
+{#
+/**
+ * @file
+ * Custom inner Form Template to rearrange the elements
+ */
+
+  Form Elements:
+    {{ form.title }}
+    {{ form.teaser }}
+    {{ form.year_show }}
+    {{ form.year_accuracy}}
+    {{ form.category }}
+    {{ form.description }}
+    {{ form.audio }}
+    {{ form.video }}
+
+    {{ form.main_image }}
+    {{ form.main_image_year }}
+    {{ form.main_image_license }}
+    {{ form.main_image_source}}
+    {{ form.main_image_source_url }}
+    {{ form.main_image_author }}
+
+    {{ form.overlay_image }}
+    {{ form.overlay_image_year }}
+    {{ form.overlay_image_license }}
+    {{ form.overlay_image_source }}
+    {{ form.overlay_image_source_url }}
+    {{ form.overlay_image_author }}
+
+    {{ form.position_lat }}
+    {{ form.position_lng }}
+    {{ form.position_angle }}
+    {{ form.position_distance }}
+    {{ form.position_view_direction }}
+    {{ form.position_city }}
+
+    {{ form.status }}
+    {{ form.uid }}
+    {{ form.changed }}
+    {{ form.created }}
+
+    {{ form.actions }}
+
+
+#}
+<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+  <li class="nav-item " role="presentation">
+    <button class="nav-link active " id="pills-mainImage-tab" data-bs-toggle="pill" data-bs-target="#pills-mainImage" type="button" role="tab" aria-controls="pills-mainImage" aria-selected="true">
+      Main Image
+    </button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="pills-sightMainInformation-tab" data-bs-toggle="pill" data-bs-target="#pills-sightMainInformation" type="button" role="tab" aria-controls="pills-sightMainInformation" aria-selected="false">
+      Sight Information
+    </button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="pills-sightPosition-tab" data-bs-toggle="pill" data-bs-target="#pills-sightPosition" type="button" role="tab" aria-controls="pills-sightPosition" aria-selected="false">
+      Sight Position
+    </button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="pills-overlayImage-tab" data-bs-toggle="pill" data-bs-target="#pills-overlayImage" type="button" role="tab" aria-controls="pills-overlayImage" aria-selected="false">
+      Overlay Image
+    </button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="pills-sightMedia-tab" data-bs-toggle="pill" data-bs-target="#pills-sightMedia" type="button" role="tab" aria-controls="pills-sightMedia" aria-selected="false">
+      Sight Media
+    </button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="pills-generalInformation-tab" data-bs-toggle="pill" data-bs-target="#pills-generalInformation" type="button" role="tab" aria-controls="pills-generalInformation" aria-selected="false">
+      General Information
+    </button>
+  </li>
+</ul>
+
+<div class="card mb-5">
+  <div class="card-body">
+    <div class="tab-content" id="pills-tabContent">
+
+      <div class="tab-pane fade show active" id="pills-mainImage" role="tabpanel" aria-labelledby="pills-mainImage-tab">
+        {{ form.main_image }}
+        <button type="button" class="btn btn-outline-primary btnNext">Continue</button>
+      </div>
+
+      <div class="tab-pane fade" id="pills-sightMainInformation" role="tabpanel" aria-labelledby="pills-sightMainInformation-tab">
+        {{ form.title }}
+        {{ form.teaser }}
+        {{ form.main_image_year }}
+        {{ form.year_show }}
+        {{ form.year_accuracy}}
+        {{ form.category }}
+        {{ form.main_image_license }}
+        {{ form.main_image_source}}
+        {{ form.main_image_source_url }}
+        {{ form.main_image_author }}
+        <button type="button" class="btn btn-outline-primary btnPrev">Previous</button>
+        <button type="button" class="btn btn-outline-primary btnNext">Continue</button>
+      </div>
+
+      <div class="tab-pane fade" id="pills-sightPosition" role="tabpanel" aria-labelledby="pills-sightPosition-tab">
+        {{ form.position_lat }}
+        {{ form.position_lng }}
+        {{ form.position_angle }}
+        {{ form.position_view_direction }}
+        {{ form.position_distance }}
+        {{ form.position_city }}
+        <button type="button" class="btn btn-outline-primary btnPrev">Previous</button>
+        <button type="button" class="btn btn-outline-primary btnNext">Continue</button>
+      </div>
+
+      <div class="tab-pane fade" id="pills-overlayImage" role="tabpanel" aria-labelledby="pills-overlayImage-tab">
+        {{ form.overlay_image }}
+        {{ form.overlay_image_year }}
+        {{ form.overlay_image_license }}
+        {{ form.overlay_image_source }}
+        {{ form.overlay_image_source_url }}
+        {{ form.overlay_image_author }}
+        <button type="button" class="btn btn-outline-primary btnPrev">Previous</button>
+        <button type="button" class="btn btn-outline-primary btnNext">Continue</button>
+      </div>
+
+      <div class="tab-pane fade" id="pills-sightMedia" role="tabpanel" aria-labelledby="pills-sightMedia-tab">
+        {{ form.description }}
+        {{ form.audio }}
+        {{ form.video }}
+        <button type="button" class="btn btn-outline-primary btnPrev">Previous</button>
+        <button type="button" class="btn btn-outline-primary btnNext">Continue</button>
+      </div>
+
+      <div class="tab-pane fade" id="pills-generalInformation" role="tabpanel" aria-labelledby="pills-generalInformation-tab">
+        {{ form|without(
+          'title',
+          'teaser',
+          'description',
+          'year_show',
+          'year_accuracy',
+          'category',
+          'audio',
+          'video',
+          'main_image',
+          'main_image_year',
+          'main_image_license',
+          'main_image_source',
+          'main_image_source_url',
+          'main_image_author',
+          'overlay_image',
+          'overlay_image_year',
+          'overlay_image_license',
+          'overlay_image_source',
+          'overlay_image_source_url',
+          'overlay_image_author',
+          'position_lat',
+          'position_lng',
+          'position_angle',
+          'position_distance',
+          'position_city',
+          'position_view_direction'
+
+        )}}
+        <button type="button" class="btn btn-outline-primary btnPrev">Previous</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+

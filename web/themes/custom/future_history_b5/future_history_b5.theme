@@ -1,0 +1,38 @@
+<?php
+
+/**
+ * @file
+ * Future History B5 theme file.
+ */
+
+
+
+/*
+ *
+ * BOOSTRAP FORM VALIDATOIN
+ * Out of the box Bootstrap5 Validation is not working - we need to set all information we need manually
+ *
+ * Implements hook_preprocess_HOOK().
+ */
+function future_history_b5_preprocess_form(&$variables)
+{
+  if (!empty($variables['element']['#entity_type'])) {
+    if ($variables['element']['#entity_type'] == 'fh_sight') {
+      $variables['attributes']['class'][] = 'needs-validation';
+      $variables['attributes']['novalidate'] = 'novalidate';
+    }
+  }
+}
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function future_history_b5_preprocess_input(&$variables)
+{
+  // set class form-control and required for the image input field
+  if ($variables['element']['#id'] == 'edit-main-image-0-upload' ) {
+    $variables['attributes']['class'][] = 'form-control';
+    $variables['attributes']['required'] = 'required';
+  }
+}
+
+

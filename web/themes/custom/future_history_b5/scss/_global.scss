@@ -1,0 +1,13 @@
+//fix the layoutbuilder bg problem
+.bg-light {
+  background-color:$black!important;
+}
+#drupal-off-canvas *,
+#drupal-off-canvas *:not(div) {
+  display:block;
+}
+.ui-layout-builder-modal {
+  fieldset.form-item {
+    background-color: $black !important;
+  }
+}

@@ -1,0 +1,206 @@
+id: migrate_fh_sights
+migration_tags:
+  - 'Drupal 7'
+  - 'Future History'
+  - Content
+migration_group: future_history
+label: 'Importieren von Ansichten'
+source:
+  plugin: d7_node_complete
+  node_type: ansicht
+destination:
+  plugin: entity:fh_sight
+
+process:
+  entity_id:
+    -
+      plugin: get
+      source: tnid
+#  vid:
+#    -
+#      plugin: get
+#      source: vid
+#  langcode:
+#    -
+#      plugin: default_value
+#      source: language
+#      default_value: und
+  title:
+    -
+      plugin: get
+      source: title
+  uid:
+    -
+      plugin: get
+      source: node_uid
+#  status:
+#    -
+#      plugin: get
+#      source: status
+#  created:
+#    -
+#      plugin: get
+#      source: created
+#  changed:
+#    -
+#      plugin: get
+#      source: timestamp
+#  promote:
+#    -
+#      plugin: get
+#      source: promote
+#  sticky:
+#    -
+#      plugin: get
+#      source: sticky
+#  revision_uid:
+#    -
+#      plugin: get
+#      source: revision_uid
+#  revision_log:
+#    -
+#      plugin: get
+#      source: log
+#  revision_timestamp:
+#    -
+#      plugin: get
+#      source: timestamp
+#  content_translation_source:
+#    -
+#      plugin: get
+#      source: source_langcode
+#  comment_node_ansicht/0/status:
+#    -
+#      plugin: get
+#      source: comment
+#  field_stadt:
+#    -
+#      plugin: sub_process
+#      source: field_stadt
+#      process:
+#        target_id: tid
+#  field_bild:
+#    -
+#      plugin: sub_process
+#      source: field_bild
+#      process:
+#        target_id: fid
+#        alt: alt
+#        title: title
+#        width: width
+#        height: height
+#  field_teaser_kurzetext:
+#    -
+#      plugin: get
+#      source: field_teaser_kurzetext
+#  field_kategorie:
+#    -
+#      plugin: sub_process
+#      source: field_kategorie
+#      process:
+#        target_id: tid
+#  field_tags:
+#    -
+#      plugin: sub_process
+#      source: field_tags
+#      process:
+#        target_id: tid
+#  field_lizenz:
+#    -
+#      plugin: sub_process
+#      source: field_lizenz
+#      process:
+#        target_id: tid
+#  field_bildquelle:
+#    -
+#      plugin: get
+#      source: field_bildquelle
+#  field_audio_datei:
+#    -
+#      plugin: sub_process
+#      source: field_audio_datei
+#      process:
+#        target_id: fid
+#        display: display
+#        description: description
+#  field_text:
+#    -
+#      plugin: get
+#      source: field_text
+#  field_position_der_aufnahme:
+#    -
+#      plugin: get
+#      source: field_position_der_aufnahme
+#  field_bild_overlay:
+#    -
+#      plugin: sub_process
+#      source: field_bild_overlay
+#      process:
+#        target_id: fid
+#        alt: alt
+#        title: title
+#        width: width
+#        height: height
+#  field_app_transfer_checksum:
+#    -
+#      plugin: get
+#      source: field_app_transfer_checksum
+#  field_jahr:
+#    -
+#      plugin: get
+#      source: field_jahr
+#  field_overlay_jahr:
+#    -
+#      plugin: get
+#      source: field_overlay_jahr
+#  field_urheber:
+#    -
+#      plugin: get
+#      source: field_urheber
+#  field_genauigkeit:
+#    -
+#      plugin: get
+#      source: field_genauigkeit
+#  field_autor_overlay:
+#    -
+#      plugin: get
+#      source: field_autor_overlay
+#  field_bildquelle_url:
+#    -
+#      plugin: get
+#      source: field_bildquelle_url
+#  field_lizenz_overlay:
+#    -
+#      plugin: sub_process
+#      source: field_lizenz_overlay
+#      process:
+#        target_id: tid
+#  field_name_der_bildquelle:
+#    -
+#      plugin: get
+#      source: field_name_der_bildquelle
+#  field_url_der_bildquelle:
+#    -
+#      plugin: get
+#      source: field_url_der_bildquelle
+#  meta_canonical:
+#    -
+#      plugin: get
+#      source: meta_canonical
+#  field_video:
+#    -
+#      plugin: sub_process
+#      source: field_video
+#      process:
+#        target_id: fid
+#        display: display
+#        description: description
+#  field_jahreszahl_anzeigen:
+#    -
+#      plugin: get
+#      source: field_jahreszahl_anzeigen
+dependencies:
+  required:
+    - upgrade_d7_user
+  optional:
+

@@ -1,0 +1,21 @@
+{#
+/**
+ * @file
+ * Default theme implementation to present a fh sight entity.
+ *
+ * This template is used when viewing a registered fh sight's page,
+ * e.g., /admin/content/fh-sight)/123. 123 being the fh sight's ID.
+ *
+ * Available variables:
+ * - content: A list of content items. Use 'content' to print all content, or
+ *   print a subset such as 'content.title'.
+ * - attributes: HTML attributes for the container element.
+ *
+ * @see template_preprocess_fh_sight()
+ */
+#}
+<article{{ attributes }}>
+  {% if content %}
+    {{- content -}}
+  {% endif %}
+</article>

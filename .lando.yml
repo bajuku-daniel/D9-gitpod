@@ -1,0 +1,40 @@
+# future-history D9 by daniel frings
+name: fh-d9
+recipe: drupal9
+excludes:
+  - .git
+  - web/themes/custom/future_history_b5/node_modules
+
+config:
+  php: '8.0'
+  composer_version: '2.1.9'
+  webroot: web
+  database: mysql:5.7
+  xdebug: true
+
+services:
+  appserver:
+    build:
+      - composer install
+  database:
+    portforward: 32774
+  database_d7:
+    type: mysql:5.7
+    portforward: 32775
+    creds:
+      user: drupal7
+      password: drupal7
+      database: drupal7
+  mailhog:
+    type: mailhog
+    hogfrom:
+      - appserver
+    portforward: true
+
+proxy:
+  mailhog:
+    - fh-mailhog.lndo.site
+
+tooling:
+  drush:
+    cmd: /app/vendor/bin/drush

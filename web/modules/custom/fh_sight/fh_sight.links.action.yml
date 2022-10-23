@@ -1,0 +1,5 @@
+fh_sight.add_form:
+  route_name: entity.fh_sight.add_form
+  title: 'Add fh sight'
+  appears_on:
+    - entity.fh_sight.collection

@@ -1,0 +1,8 @@
+type: module
+name: Future History Migrations
+description: 'Migrate Future History Content '
+package: Custom
+core_version_requirement: '>=9.1'
+dependencies:
+  - drupal:migrate
+  - migrate_plus:migrate_plus

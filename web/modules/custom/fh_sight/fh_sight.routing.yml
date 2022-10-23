@@ -1,0 +1,34 @@
+entity.fh_sight.add_form:
+  path: '/fh-sight/add'
+  defaults:
+    # Calls the form.default controller, defined in the FH_Sight entity.
+    _entity_form: fh_sight.default
+    _title: 'Add FHSIGHT'
+  requirements:
+    _permission: 'create fh sight'
+
+entity.fh_sight.edit_form:
+  path: '/fh-sight/{fh_sight}/edit'
+  defaults:
+    # Calls the form.default controller, defined in the FH_Sight entity.
+    _entity_form: fh_sight.default
+    _title: 'Edit FHSIGHT'
+  requirements:
+    _permission: 'edit fh sight'
+
+entity.fh_sight.delete_form:
+  path: '/fh-sight/{fh_sight}/delete'
+  defaults:
+    # Calls the form.default controller, defined in the FH_Sight entity.
+    _entity_form: fh_sight.delete
+    _title: 'Delete FHSIGHT'
+  requirements:
+    _permission: 'delete fh sight'
+
+entity.fh_sight.settings:
+  path: 'admin/structure/fh-sight'
+  defaults:
+    _form: '\Drupal\fh_sight\Form\FhSightSettingsForm'
+    _title: 'FH Sight'
+  requirements:
+    _permission: 'administer fh sight'

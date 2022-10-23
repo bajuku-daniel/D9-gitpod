@@ -1,0 +1,10 @@
+entity.fh_tour.settings:
+  title: FH Tour
+  description: Configure a FH tour entity type
+  route_name:  entity.fh_tour.settings
+  parent: system.admin_structure
+entity.fh_tour.collection:
+  title: FH Tours
+  description: List of fh tours
+  route_name: entity.fh_tour.collection
+  parent: system.admin_content

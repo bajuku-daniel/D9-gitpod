@@ -1,0 +1,10 @@
+entity.fh_sight.settings:
+  title: FH Sight
+  description: Configure a FH Sight entity type
+  route_name:  entity.fh_sight.settings
+  parent: system.admin_structure
+entity.fh_sight.collection:
+  title: FH Sights
+  description: List of fh sights
+  route_name: entity.fh_sight.collection
+  parent: system.admin_content

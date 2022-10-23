@@ -1,0 +1,5 @@
+fh_tour.add_form:
+  route_name: entity.fh_tour.new_form
+  title: 'Add new fh Tour'
+  appears_on:
+    - entity.fh_tour.collection

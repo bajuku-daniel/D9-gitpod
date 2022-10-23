@@ -1,0 +1,7 @@
+name: Future History Sight
+type: module
+description: 'Provides a fh sight entity.'
+package: Custom
+core: 8.x
+core_version_requirement: ^8 || ^9
+configure: entity.fh_sight.settings

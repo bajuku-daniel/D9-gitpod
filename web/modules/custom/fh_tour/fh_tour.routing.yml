@@ -1,0 +1,56 @@
+entity.fh_tour.new_form:
+  path: '/fh-tour/new/{entity_id}'
+  defaults:
+    # Calls the form.default controller, defined in the FH_tour entity.
+    _entity_form: fh_tour.default
+    _title: 'Add FH TOUR'
+    entity_id: '0'
+  requirements:
+    _permission: 'create fh tour'
+
+entity.fh_tour.edit_form:
+  path: '/fh-tour/{fh_tour}/edit'
+  defaults:
+    # Calls the form.default controller, defined in the FH_TOUR entity.
+    _entity_form: fh_tour.default
+    _title: 'Edit FH TOUR'
+  requirements:
+    _permission: 'edit fh tour'
+
+entity.fh_tour.delete_form:
+  path: '/fh-tour/{fh_tour}/delete'
+  defaults:
+    # Calls the form.default controller, defined in the FH_Tour entity.
+    _entity_form: fh_tour.delete
+    _title: 'Delete FH TOUR'
+  requirements:
+    _permission: 'delete fh tour'
+
+entity.fh_tour.settings:
+  path: 'admin/structure/fh-tour'
+  defaults:
+    _form: '\Drupal\fh_tour\Form\FhTourSettingsForm'
+    _title: 'FH tour'
+  requirements:
+    _permission: 'administer fh tour'
+
+fh_tour.action.modal:
+  path: 'fh-tour/ajax/actionModal/{entity_id}'
+  defaults:
+    _controller: '\Drupal\fh_tour\Controller\FHTourActionController::actionModal'
+  requirements:
+    _permission: 'create fh tour'
+
+fh_tour.action.add:
+  path: 'fh-tour/ajax/actionAdd/{entity_id}/{tour_id}'
+  defaults:
+    _controller: '\Drupal\fh_tour\Controller\FHTourActionController::actionAdd'
+  requirements:
+    _permission: 'create fh tour'
+
+fh_tour.action.remove:
+  path: 'fh-tour/ajax/actionRemove/{entity_id}/{tour_id}'
+  defaults:
+    _controller: '\Drupal\fh_tour\Controller\FHTourActionController::actionRemove'
+  requirements:
+    _permission: 'create fh tour'

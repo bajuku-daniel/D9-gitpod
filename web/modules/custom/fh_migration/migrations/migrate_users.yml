@@ -1,0 +1,120 @@
+id: migrate_fh_users
+class: Drupal\user\Plugin\migrate\User
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+  - 'Future History'
+  - Content
+migration_group: future_history
+label: 'FH User accounts'
+source:
+  plugin: d7_user
+process:
+  uid:
+    -
+      plugin: get
+      source: uid
+  name:
+    -
+      plugin: get
+      source: name
+  pass:
+    -
+      plugin: get
+      source: pass
+  mail:
+    -
+      plugin: get
+      source: mail
+  created:
+    -
+      plugin: get
+      source: created
+  access:
+    -
+      plugin: get
+      source: access
+  login:
+    -
+      plugin: get
+      source: login
+  status:
+    -
+      plugin: get
+      source: status
+  timezone:
+    -
+      plugin: get
+      source: timezone
+  langcode:
+    -
+      plugin: user_langcode
+      source: entity_language
+      fallback_to_site_default: false
+  preferred_langcode:
+    -
+      plugin: user_langcode
+      source: language
+      fallback_to_site_default: true
+  preferred_admin_langcode:
+    -
+      plugin: user_langcode
+      source: language
+      fallback_to_site_default: true
+  init:
+    -
+      plugin: get
+      source: init
+  roles:
+    -
+      plugin: migration_lookup
+      migration: upgrade_d7_user_role
+      source: roles
+  user_picture:
+    -
+      plugin: default_value
+      source: picture
+      default_value: null
+    -
+      plugin: migration_lookup
+      migration: upgrade_d7_file
+  field_vorname:
+    -
+      plugin: get
+      source: field_vorname
+  field_nachname:
+    -
+      plugin: get
+      source: field_nachname
+  field_wohnort:
+    -
+      plugin: get
+      source: field_wohnort
+  field__ber_mich:
+    -
+      plugin: get
+      source: field__ber_mich
+  field_interessen:
+    -
+      plugin: get
+      source: field_interessen
+  field_geschlecht:
+    -
+      plugin: get
+      source: field_geschlecht
+  field_geburtstag_tt_mm_jjjj_:
+    -
+      plugin: get
+      source: field_geburtstag_tt_mm_jjjj_
+  field_datenschutz_nutzungsbeding:
+    -
+      plugin: get
+      source: field_datenschutz_nutzungsbeding
+destination:
+  plugin: 'entity:user'
+dependencies: {  }
+migration_dependencies:
+  required: {  }
+  optional: {  }
+

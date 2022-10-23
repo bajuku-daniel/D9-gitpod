@@ -1,0 +1,168 @@
+<?php
+
+/**
+ * @file
+ * Provides a fh sight entity type.
+ */
+
+use Drupal\Core\Render\Element;
+use Drupal\Core\Entity\ContentEntityInterface;
+use Drupal\field\Entity\FieldStorageConfig;
+use Drupal\file\Entity\File;
+
+/**
+ * Implements hook_theme().
+ *
+ * Define the Template for the view and form template
+ *
+ * View: fh-sight.html.twig
+ * Form: form--inner-fh-sight.html.twig
+ */
+function fh_sight_theme() {
+  return [
+    'fh_sight' => [
+      'render element' => 'elements',
+      'template' => 'content/fh-sight',
+    ],
+    'fh_sight_form' => [
+      'render element' => 'form',
+      'template' => 'form/form-fh-sight',
+    ],
+  ];
+}
+
+/*
+ * Implements hook_theme_suggestions_alter().
+ *
+ * Define a outer Form Theme suggesteion to manipulate the <form> element.
+ * Unfortunately it is not possible to place the template file itself in our module/templates folder
+ *
+ * Template suggestion: mytheme/templates/form/form-outer-fh-sight.html.twig
+ *
+ */
+function fh_sight_theme_suggestions_alter(array &$suggestions, array $variables, $hook) {
+  if ($hook == 'form' & !empty($variables['element']['#id']) & !empty($variables['element']['#entity_type'])) {
+    if ($variables['element']['#entity_type'] == 'fh_sight') {
+      $suggestions[] = 'form__outer_fh_sight';
+    }
+  }
+}
+
+/**
+ * Move File Names for fh_sight files
+ *
+ * @param $file
+ * @return void
+ * @throws \Drupal\Core\Entity\EntityStorageException
+ */
+function fh_sight_file_insert($file)
+{
+  $timestamp = \Drupal::time()->getCurrentTime();
+  $user_id = \Drupal::currentUser()->id();
+
+  $file_details = pathinfo($file->getFileUri());
+
+  /*
+   * Rename the Main Image
+   * smi-*userid*-*timestamp*.*extension*
+   */
+  if ($file_details['dirname'] == 'public://sight-main-images'){
+    $new_file_name = 'smi-'.$user_id.'-'.$timestamp;
+    $new_file_uri = $file_details['dirname'].'/'.$new_file_name.'.'.$file_details['extension'];
+    \Drupal::service('file.repository')->move($file, $new_file_uri);
+  }
+
+  /*
+   * Rename the Overlay Image
+   * soi-*userid*-*timestamp*.*extension*
+   */
+  if ($file_details['dirname'] == 'public://sight-overlay-images'){
+    $new_file_name = 'soi-'.$user_id.'-'.$timestamp;
+    $new_file_uri = $file_details['dirname'].'/'.$new_file_name.'.'.$file_details['extension'];
+    \Drupal::service('file.repository')->move($file, $new_file_uri);
+  }
+
+  /*
+  * Rename the Audio files
+  * sa-*userid*-*timestamp*.*extension*
+  */
+  if ($file_details['dirname'] == 'public://sight-audios'){
+    $new_file_name = 'sa-'.$user_id.'-'.$timestamp;
+    $new_file_uri = $file_details['dirname'].'/'.$new_file_name.'.'.$file_details['extension'];
+    \Drupal::service('file.repository')->move($file, $new_file_uri);
+  }
+
+  /*
+  * Rename the video files
+  * sv-*userid*-*timestamp*.*extension*
+  */
+  if ($file_details['dirname'] == 'public://sight-videos'){
+    $new_file_name = 'sv-'.$user_id.'-'.$timestamp;
+    $new_file_uri = $file_details['dirname'].'/'.$new_file_name.'.'.$file_details['extension'];
+    \Drupal::service('file.repository')->move($file, $new_file_uri);
+  }
+}
+
+/**
+ * Set allowed Option Values for the fh_sight category fields from the entity Type Settings.
+ *
+ * @return array
+ *   An array of possible key and value options.
+ *
+ * @see options_allowed_values()
+ */
+function fh_sight_category_allowed_values_function() {
+  $config = \Drupal::config('fh_sight.settings');
+  $config_options = extractAllowedListValues($config->get('sight_categories'));
+  return $config_options;
+}
+
+/**
+ * helper function to extract values from string | string to select options
+ *
+ * @param string
+ *  A string that contains key | value
+ *
+ * @return array
+ * returns an array of key value options
+ */
+function extractAllowedListValues($string) {
+  $values = [];
+
+  $list = explode("\n", $string);
+  $list = array_map('trim', $list);
+  $list = array_filter($list, 'strlen');
+
+  foreach ($list as $position => $text) {
+    // Check for an explicit key.
+    $matches = [];
+    if (preg_match('/(.*)\|(.*)/', $text, $matches)) {
+      // Trim key and value to avoid unwanted spaces issues.
+      $key = trim($matches[1]);
+      $value = trim($matches[2]);
+    }
+    $values[$key] = $value;
+  }
+  return $values;
+}
+
+/**
+ * Prepares variables for fh sight templates.
+ *
+ * Default template: fh-sight.html.twig.
+ *
+ * @param array $variables
+ *   An associative array containing:
+ *   - elements: An associative array containing the fh sight information and any
+ *     fields attached to the entity.
+ *   - attributes: HTML attributes for the containing element.
+ */
+function template_preprocess_fh_sight(array &$variables) {
+  foreach (Element::children($variables['elements']) as $key) {
+    $variables['content'][$key] = $variables['elements'][$key];
+  }
+}
+
+
+
+
