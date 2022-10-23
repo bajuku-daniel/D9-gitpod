@@ -1,8 +1,10 @@
-image: drud/ddev-gitpod-base:20221018
-
+# xdebug phpstorm bug: turn of the prebuild image and use the version from PR
+# https://github.com/gitpod-io/gitpod/issues/9565
+#image: drud/ddev-gitpod-base:20221018
 tasks:
   - name: ddev-gitpod
     init: |
+      unzip 407640044.zip && sudo mv ddev /usr/local/bin/ddev && sudo chmod +x /usr/local/bin/ddev
       ddev start -y
       ddev composer install
     command: |
