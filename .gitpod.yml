@@ -2,17 +2,10 @@ image: drud/ddev-gitpod-base:20221018
 tasks:
   - name: ddev-gitpod
     init: |
-      # get ddev from HEAD and run make ddev
-      git clone https://github.com/drud/ddev.git tmp/ddev
-      cd tmp/ddev
-      make
-      # prewarm gitpod with ddev
-      .gotmp/bin/linux_amd64/ddev start -y
-      .gotmp/bin/linux_amd64/ddev import-db --src=../../sql/db.sql.gz
-      .gotmp/bin/linux_amd64/ddev composer-install
+      ddev start -y
+      ddev composer install
+      ddev import-db --src=sql/db.sql.gz
     command: |
-      # make ddev executeable directly from /usr/local/bin
-      # sudo cp .gotmp/bin/linux_amd64/ddev /usr/local/bin/.
       ddev start -y
       gp ports await 8080 && gp preview $(gp url 8080)
 vscode:
