@@ -10,7 +10,7 @@ tasks:
       ./ddev composer install
     command: |
       sudo mv ddev /usr/local/bin/ddev
-      ddev describe
+      ddev start -y
       gp ports await 8080 && gp preview $(gp url 8080)
 vscode:
   extensions:
