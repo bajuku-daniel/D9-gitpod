@@ -8,7 +8,7 @@ tasks:
       make
       # prewarm gitpod with ddev
       .gotmp/bin/linux_amd64/ddev start -y
-      .gotmp/bin/linux_amd64/ddev import-db --src=sql/db.sql.gz
+      .gotmp/bin/linux_amd64/ddev import-db --src=../../sql/db.sql.gz
       .gotmp/bin/linux_amd64/ddev composer-install
     command: |
       # make ddev executeable directly from /usr/local/bin
