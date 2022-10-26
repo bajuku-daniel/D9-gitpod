@@ -4,13 +4,12 @@
 tasks:
   - name: ddev-gitpod
     init: |
-      unzip 407640044.zip && sudo chmod +x ddev
-      ./ddev start -y
-      ./ddev import-db --src=sql/db.sql.gz
-      ./ddev composer install
-    command: |
-      sudo mv ddev /usr/local/bin/ddev
+      brew install --HEAD --fetch-head drud/ddev/ddev
       ddev start -y
+      ddev import-db --src=sql/db.sql.gz
+      ddev composer install
+    command: |
+      ddev restart -y
       gp ports await 8080 && gp preview $(gp url 8080)
 vscode:
   extensions:
