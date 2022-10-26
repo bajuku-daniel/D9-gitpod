@@ -9,7 +9,7 @@ tasks:
       ddev import-db --src=sql/db.sql.gz
       ddev composer install
     command: |
-      ddev restart -y
+      ddev start -y
       gp ports await 8080 && gp preview $(gp url 8080)
 vscode:
   extensions:
