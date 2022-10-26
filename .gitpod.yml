@@ -12,7 +12,7 @@ tasks:
       .gotmp/bin/linux_amd64/ddev composer-install
     command: |
       # make ddev executeable directly from /usr/local/bin
-      sudo cp .gotmp/bin/linux_amd64/ddev /usr/local/bin/.
+      # sudo cp .gotmp/bin/linux_amd64/ddev /usr/local/bin/.
       ddev start -y
       gp ports await 8080 && gp preview $(gp url 8080)
 vscode:
