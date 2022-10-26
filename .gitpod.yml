@@ -5,12 +5,12 @@ tasks:
   - name: ddev-gitpod
     init: |
       brew install --HEAD --fetch-head drud/ddev/ddev
-      cp /home/linuxbrew/.linuxbrew/bin/ddev ./ddev
+      sudo cp /home/linuxbrew/.linuxbrew/bin/ddev .
       ddev start -y
       ddev import-db --src=sql/db.sql.gz
       ddev composer install
     command: |
-      mv ./ddev/usr/local/bin/.
+      sudo mv ddev /usr/local/bin/ddev
       ddev start -y
       gp ports await 8080 && gp preview $(gp url 8080)
 vscode:
