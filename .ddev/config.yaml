@@ -1,4 +1,4 @@
-name: FuthureHistoryD9
+name: D9-gitpod
 type: drupal9
 docroot: web
 php_version: "8.1"
